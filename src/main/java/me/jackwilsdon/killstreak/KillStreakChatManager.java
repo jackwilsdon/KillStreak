@@ -3,6 +3,7 @@ package me.jackwilsdon.killstreak;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
 
 public class KillStreakChatManager {
 	private ConfigurationSection config = null;
@@ -46,14 +47,14 @@ public class KillStreakChatManager {
 	public String getBroadcastMessage(String username)
 	{
 		int streak = this.manager.getKills(username);
-		Potion potion = this.manager.getPotion(streak);
+		PotionEffect effect = this.manager.getPotionEffect(streak);
 
-		if (potion == null)
+		if (effect == null)
 		{
 			return null;
 		}
 
-		String powerup = potion.getType().name();
+		String powerup = effect.getType().getName();
 
 		StringBuilder base = new StringBuilder();
 		base.append(this.getPrefix());
@@ -69,7 +70,7 @@ public class KillStreakChatManager {
 	public String getMessage(String username)
 	{
 		int streak = this.manager.getKills(username);
-		Potion potion = this.manager.getPotion(streak);
+		PotionEffect potion = this.manager.getPotionEffect(streak);
 
 		StringBuilder base = new StringBuilder();
 		base.append(this.getPrefix());
@@ -79,7 +80,7 @@ public class KillStreakChatManager {
 		if (potion != null)
 		{
 			base.append(" and have been rewarded the powerup ");
-			base.append("&e"+potion.getType().name()+"&f!");
+			base.append("&e"+potion.getType().getName()+"&f!");
 		} else {
 			base.append("!");
 		}

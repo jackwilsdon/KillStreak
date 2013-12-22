@@ -5,6 +5,7 @@ import java.util.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionType;
 
 /**
@@ -141,9 +142,9 @@ public class KillStreakManager {
 	/**
 	 * Get the potion for the specified killstreak
 	 * @param kills The killstreak to get the potion for
-	 * @return The potion from the configuration (null if no potion available)
+	 * @return The potion effect from the configuration (null if no potion available)
 	 */
-	public Potion getPotion(int kills)
+	public PotionEffect getPotionEffect(int kills)
 	{
 		ConfigurationSection section = this.plugin.getConfig().getConfigurationSection("KillStreak.streaks."+kills);
 		if (section == null)
@@ -153,6 +154,7 @@ public class KillStreakManager {
 		
 		String type = section.getString("potion");
 		int level = section.getInt("level");
+		int seconds = section.getInt("seconds", -1);
 		
 		PotionType pt = PotionType.valueOf(type);
 		if (pt == null)
@@ -161,18 +163,24 @@ public class KillStreakManager {
 		}
 		
 		Potion potion = new Potion(pt, level);
-		return potion;
+		PotionEffect effect = potion.getEffects().iterator().next();
+		if (seconds > 0) 
+		{
+		    effect = new PotionEffect(effect.getType(), seconds * 20, effect.getAmplifier(), effect.isAmbient());
+		    
+		}
+		return effect;
 	}
 	
 	/**
 	 * Get the potion for the specified user
 	 * @param kills The user to get the potion for
-	 * @return The potion from the configuration (null if no potion available)
+	 * @return The potion effect from the configuration (null if no potion available)
 	 */
-	public Potion getPotion(String username)
+	public PotionEffect getPotionEffect(String username)
 	{
 		int kills = this.getKills(username);
-		return this.getPotion(kills);
+		return this.getPotionEffect(kills);
 	}
 	
 	/**
@@ -209,15 +217,15 @@ public class KillStreakManager {
 	public void apply(String username)
 	{
 		Player player = this.plugin.getServer().getPlayer(username);
-		Potion potion = this.getPotion(username);
+		PotionEffect potion = this.getPotionEffect(username);
 		
 		if (potion == null || player == null)
 		{
 			return;
 		}
 
-		player.removePotionEffect(potion.getType().getEffectType());
-		player.addPotionEffects(potion.getEffects());
+		player.removePotionEffect(potion.getType());
+		player.addPotionEffect(potion);
 	}
 	
 	/**
@@ -227,7 +235,7 @@ public class KillStreakManager {
 	public void broadcast(String username)
 	{
 		Player player = this.plugin.getServer().getPlayer(username);
-		Potion potion = this.getPotion(username);
+		PotionEffect potion = this.getPotionEffect(username);
 		
 		if (this.chatManager.broadcastOnPowerup() && potion != null)
 		{

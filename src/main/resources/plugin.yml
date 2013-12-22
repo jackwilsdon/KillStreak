@@ -1,5 +1,5 @@
 name: KillStreak
-main: com.jackwilsdon.killstreak.KillStreakPlugin
+main: me.jackwilsdon.killstreak.KillStreakPlugin
 version: ${project.version}
 description: "Get potion effects for kill streaks!"
 author: "Jack Wilsdon (jackwilsdon)"
