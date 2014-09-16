@@ -172,7 +172,7 @@ public class KillStreakManager {
 	
 	/**
 	 * Get the potion for the specified user
-	 * @param kills The user to get the potion for
+	 * @param username The user to get the potion for
 	 * @return The potion effect from the configuration (null if no potion available)
 	 */
 	public PotionEffect getPotionEffect(String username)
