@@ -1,7 +1,5 @@
 package me.jackwilsdon.killstreak;
- 
-import java.io.IOException;
-import java.util.logging.Level;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class KillStreakPlugin extends JavaPlugin {

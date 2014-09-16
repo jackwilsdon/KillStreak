@@ -2,7 +2,6 @@ package me.jackwilsdon.killstreak;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 
 public class KillStreakChatManager {

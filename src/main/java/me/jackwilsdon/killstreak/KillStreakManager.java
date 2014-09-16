@@ -1,12 +1,12 @@
 package me.jackwilsdon.killstreak;
 
-import java.util.*;
-
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionType;
+
+import java.util.*;
 
 /**
  * Manages the killstreaks of players
