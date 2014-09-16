@@ -35,7 +35,7 @@ public class KillStreakEventListener implements Listener {
 		victim.sendMessage(message);
 		this.manager.resetPlayer(victim.getName());
 
-		if (killer instanceof Player)
+		if (killer != null)
 		{
 			this.manager.addKill(killer.getName());
 			this.manager.apply(killer.getName());
@@ -74,7 +74,7 @@ public class KillStreakEventListener implements Listener {
 		Player player = event.getPlayer();
 		if (this.manager.resetOnDisconnect())
 		{
-			this.manager.resetPlayer(player.getName());;
+			this.manager.resetPlayer(player.getName());
 		}
 	}
 
