@@ -1,8 +1,8 @@
-name: KillStreak
+name: ${project.name}
 version: ${project.version}
-description: "Get potion effects for kill streaks!"
+description: ${project.description}
 author: "Jack Wilsdon (jackwilsdon)"
-website: "http://dev.bukkit.org/bukkit-plugins/killstreak/"
+website: ${project.url}
 main: me.jackwilsdon.killstreak.KillStreakPlugin
 
 commands:
