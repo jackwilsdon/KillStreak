@@ -57,11 +57,11 @@ public class KillStreakChatManager {
 
 		StringBuilder base = new StringBuilder();
 		base.append(this.getPrefix());
-		base.append(this.getUsernameColor()+username+"&f");
+		base.append(this.getUsernameColor()).append(username).append("&f");
 		base.append(" has a killstreak of ");
-		base.append(this.getKillStreakColor()+Integer.toString(streak)+"&f");
+		base.append(this.getKillStreakColor()).append(streak).append("&f");
 		base.append(" and has been rewarded the powerup ");
-		base.append("&e"+powerup+"&f!");
+		base.append("&e").append("powerup").append("&f!");
 
 		return this.parseColors(base.toString());
 	}
