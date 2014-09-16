@@ -9,7 +9,7 @@
 
   <name>KillStreak</name>
   <description>Get potion effects for kill streaks!</description>
-  <url>http://maven.apache.org</url>
+  <url>http://dev.bukkit.org/bukkit-plugins/killstreak/</url>
 
   <dependencies>
     <dependency>
