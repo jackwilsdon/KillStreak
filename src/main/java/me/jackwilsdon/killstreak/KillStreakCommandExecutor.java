@@ -40,7 +40,6 @@ public class KillStreakCommandExecutor implements CommandExecutor {
 			{
 				String message = this.manager.getChatManager().getStreak(sender.getName());
 				sender.sendMessage(message);
-				return true;
 			}
 			
 			if (args.length == 1)
@@ -55,14 +54,12 @@ public class KillStreakCommandExecutor implements CommandExecutor {
 				
 				String message = this.manager.getChatManager().getStreak(username, false);
 				sender.sendMessage(message);
-				return true;
 			}
 		} else {
 			if (args.length == 0)
 			{
 				String message = "Usage: /"+label+" <username>";
 				sender.sendMessage(message);
-				return true;
 			}
 			
 			if (args.length == 1)
@@ -76,23 +73,9 @@ public class KillStreakCommandExecutor implements CommandExecutor {
 				
 				String message = this.manager.getChatManager().getStreak(username, false);
 				sender.sendMessage(message);
-				return true;
 			}
 		}
-		if (args.length == 1)
-		{
-			if (args[0].equals("reload"))
-			{
-				if (!sender.hasPermission("killstreak.reload"))
-				{
-					sender.sendMessage(this.manager.getChatManager().parseColors("&cYou don't have permission to do that!"));
-					return true;
-				}
-				
-				sender.sendMessage(this.manager.getChatManager().parseColors("&aKillStreak configuration reloaded"));
-				this.manager.reload();
-			}
-		}
+
 		return true;
 	}
 }
