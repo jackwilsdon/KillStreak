@@ -11,6 +11,20 @@
   <description>Get potion effects for kill streaks!</description>
   <url>http://dev.bukkit.org/bukkit-plugins/killstreak/</url>
 
+  <developers>
+    <developer>
+      <id>jackwilsdon</id>
+      <name>Jack Wilsdon</name>
+      <email>jack.wilsdon@gmail.com</email>
+      <url>http://jackwilsdon.me</url>
+    </developer>
+  </developers>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.bukkit</groupId>
