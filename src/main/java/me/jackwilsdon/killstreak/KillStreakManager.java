@@ -127,11 +127,9 @@ public class KillStreakManager {
 		
 		Map<String, Integer> players = new HashMap<String, Integer>();
 		Set<String> pl = this.plugin.getConfig().getConfigurationSection("PlayerStreaks").getKeys(true);
-		Iterator<String> it = pl.iterator();
 		
-		while (it.hasNext())
+		for (String name: pl)
 		{
-			String name = it.next();
 			int kills = this.plugin.getConfig().getInt("PlayerStreaks."+name);
 			players.put(name, kills);
 		}
@@ -192,11 +190,9 @@ public class KillStreakManager {
 		List<?> list = this.plugin.getConfig().getList("KillStreak.count-mobs.mobs");
 		List<String> output = new ArrayList<String>();
 		
-		Iterator<?> it = list.iterator();
-		while (it.hasNext())
+		for(Object i: list)
 		{
-			String i = (String) it.next();
-			output.add(i);
+			output.add((String) i);
 		}
 		return output;
 	}
