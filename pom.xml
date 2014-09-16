@@ -8,6 +8,7 @@
   <packaging>jar</packaging>
 
   <name>KillStreak</name>
+  <description>Get potion effects for kill streaks!</description>
   <url>http://maven.apache.org</url>
 
   <dependencies>
@@ -57,7 +58,7 @@
         </configuration>
       </plugin>
     </plugins>
-    
+
     <resources>
       <resource>
         <directory>src/main/resources</directory>
