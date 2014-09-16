@@ -61,7 +61,7 @@ public class KillStreakChatManager {
 		base.append(" has a killstreak of ");
 		base.append(this.getKillStreakColor()).append(streak).append("&f");
 		base.append(" and has been rewarded the powerup ");
-		base.append("&e").append("powerup").append("&f!");
+		base.append("&e").append(powerup).append("&f!");
 
 		return this.parseColors(base.toString());
 	}
