@@ -55,15 +55,10 @@ public class KillStreakChatManager {
 
 		String powerup = effect.getType().getName();
 
-		StringBuilder base = new StringBuilder();
-		base.append(this.getPrefix());
-		base.append(this.getUsernameColor()).append(username).append("&f");
-		base.append(" has a killstreak of ");
-		base.append(this.getKillStreakColor()).append(streak).append("&f");
-		base.append(" and has been rewarded the powerup ");
-		base.append("&e").append(powerup).append("&f!");
+		String message = String.format("%s%s%s&f has a killstreak of %s%d&f and has been rewarded the powerup &e%s&f!",
+                this.getPrefix(), this.getUsernameColor(), username, this.getKillStreakColor(), streak, powerup);
 
-		return this.parseColors(base.toString());
+		return this.parseColors(message);
 	}
 
 	public String getMessage(String username)
@@ -71,49 +66,42 @@ public class KillStreakChatManager {
 		int streak = this.manager.getKills(username);
 		PotionEffect potion = this.manager.getPotionEffect(streak);
 
-		StringBuilder base = new StringBuilder();
-		base.append(this.getPrefix());
-		base.append("You now have a killstreak of ");
-		base.append(this.getKillStreakColor()+Integer.toString(streak)+"&f");
+        String suffix = "!";
 
 		if (potion != null)
 		{
-			base.append(" and have been rewarded the powerup ");
-			base.append("&e"+potion.getType().getName()+"&f!");
-		} else {
-			base.append("!");
+			suffix = String.format(" and have been rewarded the powerup &e%s&f!", potion.getType().getName());
 		}
 
-		return this.parseColors(base.toString());
+        String message = String.format("%sYou now have a killstreak of %s%d&f%s",
+                this.getPrefix(), this.getKillStreakColor(), streak, suffix);
+
+        return this.parseColors(message);
 	}
 
 	public String getDeathMessage(String username)
 	{
 		int streak = this.manager.getKills(username);
 
-		StringBuilder base = new StringBuilder();
-		base.append(this.getPrefix());
-		base.append("Your killstreak was ");
-		base.append(this.getKillStreakColor()+Integer.toString(streak));
+        String message = String.format("%sYour killstreak was %s%d", this.getPrefix(), this.getKillStreakColor(), streak);
 
-		return this.parseColors(base.toString());
+		return this.parseColors(message);
 	}
 
 	public String getStreak(String username, boolean self)
 	{
 		int streak = this.manager.getKills(username);
 
-		StringBuilder base = new StringBuilder();
-		base.append(this.getPrefix());
-		if (self)
-		{
-			base.append("Your killstreak is ");
-		} else {
-			base.append(this.getUsernameColor()+username+" has a killstreak of ");
-		}
-		base.append(this.getKillStreakColor()+Integer.toString(streak));
+		String prefix = "Your killstreak is ";
 
-		return this.parseColors(base.toString());
+		if (!self)
+		{
+            prefix = String.format("%s%s has a killstreak of ", this.getUsernameColor(), username);
+		}
+
+        String message = String.format("%s%s%s%d", this.getPrefix(), prefix, this.getKillStreakColor(), streak);
+
+		return this.parseColors(message);
 	}
 
 	public String getStreak(String username)
